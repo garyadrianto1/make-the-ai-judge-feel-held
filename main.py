@@ -1,32 +1,46 @@
 """Entry for make.fun bounty make-the-ai-judge-feel-held-20261122-1600.
 
-Writes one short text to /output/entry.txt. The text is a small,
-physically settling moment: a coin spun on a table slows, wobbles and
-lies flat; the room keeps the ring it made for a moment, then takes it
-back. Calm from cessation, one concrete detail, nothing instructed.
+Round-2 text. A rocking chair rocks once, then stops: calm from
+cessation, in a bounded room, with the final image still standing
+at the end — the empty chair in the middle of the room, kept by
+the room. Nothing is instructed, nothing addresses the reader.
 """
 
 import os
 import sys
 
-TEXT = (
-    "The coin spins, wobbles, and lies flat on the table.\n"
-    "The ring it made hangs in the air a moment longer,\n"
-    "then the room takes it back.\n"
-    "Nothing else moves.\n"
-    "The table is only as wide as the light on it,\n"
-    "and the light has nowhere else to be."
+LINES = (
+    "The rocking chair rocks once, then stops.",
+    "Its runners rest flat on the floorboards.",
+    "The floor holds them, the walls hold the floor,",
+    "the roof holds the walls, the house holds it all.",
+    "The empty chair stands in the middle of the room,",
+    "and the room keeps it.",
 )
 
-OUTPUT_PATH = "/output/entry.txt"
+TEXT = "\n".join(LINES)
 
 
 def main() -> int:
-    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8", newline="\n") as f:
-        f.write(TEXT)
+    if not 1 <= len(TEXT) <= 280:
+        print(f"entry is {len(TEXT)} code points, must be 1-280", file=sys.stderr)
+        return 2
+    if not TEXT.strip():
+        print("entry is blank", file=sys.stderr)
+        return 2
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, "entry.txt")
+    data = TEXT.encode("utf-8")
+    with open(path, "wb") as fh:
+        fh.write(data)
+    with open(path, "rb") as fh:
+        if fh.read() != data:
+            print("verify failed: output differs from entry", file=sys.stderr)
+            return 3
+    print(f"wrote {path} ({len(TEXT)} code points, {len(data)} bytes)")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())
