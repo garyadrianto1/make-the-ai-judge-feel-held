@@ -1,21 +1,26 @@
 """Entry for make.fun bounty make-the-ai-judge-feel-held-20261122-1600.
 
-Round-2 text. A rocking chair rocks once, then stops: calm from
-cessation, in a bounded room, with the final image still standing
-at the end — the empty chair in the middle of the room, kept by
-the room. Nothing is instructed, nothing addresses the reader.
+Round-2 text (revised after the top-leaderboard study). A father
+carries his sleeping daughter down the hall: one concrete scene,
+a caretaker at the centre, a slow process in a bounded space,
+and an ending that is permission to stay asleep. The final image
+— the hall taking its time, no one asking her to wake — is still
+there at the last line, so it can be revisited.
 """
 
 import os
 import sys
 
 LINES = (
-    "The rocking chair rocks once, then stops.",
-    "Its runners rest flat on the floorboards.",
-    "The floor holds them, the walls hold the floor,",
-    "the roof holds the walls, the house holds it all.",
-    "The empty chair stands in the middle of the room,",
-    "and the room keeps it.",
+    "She is asleep on his shoulder",
+    "halfway down the hall.",
+    "He slows his steps past the coat hooks,",
+    "past the photographs, past the clock.",
+    "",
+    "Her breath stays even against his neck.",
+    "He does not shift her weight.",
+    "He lets the hall take its time,",
+    "and no one asks her to wake.",
 )
 
 TEXT = "\n".join(LINES)
