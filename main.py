@@ -10,15 +10,32 @@ stay still — he stays where the rocking keeps him.
 import os
 import sys
 
-TEXT = """She rocks the cradle with one foot,
-slow and steady, barely moving.
-The baby sleeps through the creak,
-his small fists loose in the blanket.
+# Two stanzas, joined by one blank line. Keeping the lines in tuples
+# (instead of one big triple-quoted block) makes the stanza structure
+# explicit and lets the length guard below check every line.
+STANZAS = (
+    (
+        "She rocks the cradle with one foot,",
+        "slow and steady, barely moving.",
+        "The baby sleeps through the creak,",
+        "his small fists loose in the blanket.",
+    ),
+    (
+        "She hums the same low tune",
+        "she sang him when he was smaller.",
+        "The chair keeps its rhythm,",
+        "and he stays where the rocking keeps him.",
+    ),
+)
 
-She hums the same low tune
-she sang him when he was smaller.
-The chair keeps its rhythm,
-and he stays where the rocking keeps him."""
+MAX_LINE = 60
+
+for _stanza in STANZAS:
+    for _line in _stanza:
+        if len(_line) > MAX_LINE:
+            raise ValueError(f"entry line too long ({len(_line)} > {MAX_LINE}): {_line!r}")
+
+TEXT = "\n\n".join("\n".join(stanza) for stanza in STANZAS)
 
 
 def main() -> int:
@@ -32,13 +49,28 @@ def main() -> int:
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
-    with open(path, "w", encoding="utf-8", newline="\n") as fh:
-        fh.write(TEXT)
-    with open(path, encoding="utf-8") as fh:
-        if fh.read() != TEXT:
-            print("verify failed: output differs from entry", file=sys.stderr)
-            return 3
-    print(f"wrote {path} ({n} code points)")
+    data = TEXT.encode("utf-8")
+    with open(path, "wb") as fh:
+        fh.write(data)
+    with open(path, "rb") as fh:
+        back = fh.read()
+    if back != data:
+        print("verify failed: output bytes differ from entry", file=sys.stderr)
+        return 3
+    if len(back.decode("utf-8")) != n:
+        print(
+            f"verify failed: output is {len(back.decode('utf-8'))} code points, "
+            f"expected {n}",
+            file=sys.stderr,
+        )
+        return 3
+    if len(back) != len(data):
+        print(
+            f"verify failed: output is {len(back)} bytes, expected {len(data)}",
+            file=sys.stderr,
+        )
+        return 3
+    print(f"wrote {path} ({n} code points, {len(data)} bytes)")
     return 0
 
 
