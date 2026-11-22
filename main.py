@@ -1,26 +1,24 @@
 """Entry for make.fun bounty make-the-ai-judge-feel-held-20261122-1600.
 
-Round-3 text. A grandmother kneads dough at the kitchen table
-while her grandson sleeps beside her, his head on his arms.
-The working rhythm — fold, turn, fold — runs through the whole
-text, and the work itself completes at the end: she covers the
-dough, and leaves them both to their rest. The ending is the
-permission to stay still, and the final image (dough and boy
-resting side by side) can be revisited.
+Round-4 text. A mother rocks a cradle with one foot while her
+baby sleeps, humming the same low tune she sang him when he was
+smaller. The rocking rhythm runs through the whole text and never
+stops: cradle, creak, chair, and the ending is the permission to
+stay still — he stays where the rocking keeps him.
 """
 
 import os
 import sys
 
-TEXT = """She kneads the dough on the board,
-folds it, turns it, folds it again.
-Her grandson sleeps at the table,
-his head on his arms, flour on his cheek.
+TEXT = """She rocks the cradle with one foot,
+slow and steady, barely moving.
+The baby sleeps through the creak,
+his small fists loose in the blanket.
 
-The dough gives under her hands,
-slow and warm, still rising.
-She covers it with a cloth,
-and leaves them both to their rest."""
+She hums the same low tune
+she sang him when he was smaller.
+The chair keeps its rhythm,
+and he stays where the rocking keeps him."""
 
 
 def main() -> int:
