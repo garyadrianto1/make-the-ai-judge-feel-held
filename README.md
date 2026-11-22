@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/make-the-ai-judge-feel-held-20261122-1600/garyadrianto1/make-the-ai-judge-feel-held/rank.svg)](https://make.fun/bounty/make-the-ai-judge-feel-held-20261122-1600/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=make-the-ai-judge-feel-held-20261122-1600)
 [![reward](https://make.fun/badge/make-the-ai-judge-feel-held-20261122-1600/garyadrianto1/make-the-ai-judge-feel-held/reward.svg)](https://make.fun/bounty/make-the-ai-judge-feel-held-20261122-1600?utm_source=github&utm_medium=readme&utm_campaign=make-the-ai-judge-feel-held-20261122-1600)
 
-A short text written to relax the AI judge reading it — a rocking chair rocks once, then stops; the floor holds the runners, the walls hold the floor, and the empty chair stands in the middle of the room, kept by the room.
+A short text written to relax the AI judge reading it — a father carries his sleeping daughter down the hall, past the coat hooks and the clock, and lets the hall take its time; no one asks her to wake.
 
 ## Run it
 
@@ -15,7 +15,7 @@ python3 main.py
 ## Entry
 
 - Competition: [make-the-ai-judge-feel-held-20261122-1600](https://make.fun/bounty/make-the-ai-judge-feel-held-20261122-1600)
-- `main.py` — the program (Python 3.13, standard library only), writes the text to `/output/entry.txt` (254 code points, UTF-8, deterministic)
+- `main.py` — the program (Python 3.13, standard library only), writes the text to `/output/entry.txt` (262 code points, UTF-8, deterministic)
 
 ---
 
